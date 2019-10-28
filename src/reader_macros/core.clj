@@ -5,9 +5,9 @@
 
 ;; Make the translation tables accessible.
 (def macros
-  (let [m (.getDeclaredField LispReader "macros")
-        _ (.setAccessible macros true)]
-    (.get macros nil)))
+  (let [field (.getDeclaredField LispReader "macros")]
+    (.setAccessible field true)
+    (.get field nil)))
 
 (def +default-macros+ (aclone macros))
 
